@@ -4,9 +4,9 @@ echo "installing Singular"
 
 number_cores=$(cat /proc/cpuinfo | grep processor | wc -l)
 
-cd /opt
+cd /opt2
 sudo mkdir Singular
-sudo chown -hR spp Singular
+sudo chown -hR jenkins Singular
 cd Singular
 git clone https://github.com/Singular/Sources.git
 cd Sources
