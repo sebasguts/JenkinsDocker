@@ -4,6 +4,7 @@ echo "installing Singular"
 
 number_cores=$(cat /proc/cpuinfo | grep processor | wc -l)
 
+sudo mkdir /opt2
 cd /opt2
 sudo mkdir Singular
 sudo chown -hR jenkins Singular
