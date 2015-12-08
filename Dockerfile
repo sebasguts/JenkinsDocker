@@ -5,15 +5,15 @@ FROM ubuntu:trusty
 MAINTAINER Sebastian Gutsche <sebastian.gutsche@gmail.com>
 
 RUN apt-get update -qq \
-    && adduser --quiet --shell /bin/bash --gecos "spp user,101,," --disabled-password spp \
-    && adduser spp sudo \
-    && chown -R spp:spp /home/spp/ \
+    && adduser --quiet --shell /bin/bash --gecos "jenkins user,101,," --disabled-password jenkins \
+    && adduser jenkins sudo \
+    && chown -R jenkins:jenkins /home/jenkins/ \
     && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-USER spp
+USER jenkins
 
-ENV gmp_folder /home/spp/gmp
-ENV FourTiTwo_shared_folder /home/spp/4ti2-shared
+ENV gmp_folder /home/jenkins/gmp
+ENV FourTiTwo_shared_folder /home/jenkins/4ti2-shared
 
 RUN    mkdir /tmp/install_scripts
 
@@ -61,11 +61,6 @@ ADD install_scripts/install_gap.sh /tmp/install_scripts/install_gap.sh
 RUN sudo chmod a+x install_gap.sh \
     && ./install_gap.sh http://www.gap-system.org/pub/gap/gap48/beta/gap4r8p0_2015_11_01-13_28.tar.gz ${gmp_folder}
 
-# # Nemo
-ADD install_scripts/install_nemo.sh /tmp/install_scripts/install_nemo.sh
-RUN sudo chmod a+x install_nemo.sh \
-    && ./install_nemo.sh
-
 # Local package folder and workspace for GAP
 ADD install_scripts/install_gap_options.sh /tmp/install_scripts/install_gap_options.sh
 RUN sudo chmod a+x install_gap_options.sh \
@@ -78,7 +73,7 @@ RUN sudo chmod a+x install_gap_packages.sh \
 
 ## Installation complete, setting up user enviroment
 
-ENV HOME /home/spp
-ENV PATH /home/spp/bin:$PATH
-WORKDIR /home/spp
+ENV HOME /home/jenkins
+ENV PATH /home/jenkins/bin:$PATH
+WORKDIR /home/jenkins
 

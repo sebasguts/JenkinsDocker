@@ -9,9 +9,10 @@ wget $1
 mkdir gap
 tar -xf gap*tar* --strip-components=1 -C gap
 rm -rf gap*tar*
-sudo mv gap /opt/
-sudo chown -R spp /opt/gap
-cd /opt/gap
+sudo mkdir /opt2
+sudo mv gap /opt2/
+sudo chown -R jenkins /opt2/gap
+cd /opt2/gap
 ./configure --with-gmp=$2
 make -j${number_cores}
 cd pkg
