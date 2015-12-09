@@ -88,18 +88,18 @@ git clone https://github.com/martin-leuner/alcove.git
 hg clone https://bitbucket.org/gap-system/numericalsgps
 git clone https://github.com/homalg-project/homalg_starter.git
 cd homalg_starter
-mkdir /home/spp/bin
+mkdir /home/jenkins/bin
 echo 'export homalg_project_modules="4ti2Interface Convex ExamplesForHomalg Gauss GaussForHomalg GradedModules GradedRingForHomalg HomalgToCAS IO_ForHomalg LocalizeRingForHomalg MatricesForHomalg Modules RingsForHomalg SCO ToolsForHomalg ToricVarieties homalg"' > init_homalg_starter
 echo 'export extra_modules="alcove AbelianSystems AutoDoc D-Modules SCSCP_ForHomalg Sheaves SimplicialObjects SystemTheory alexander k-Points Conley alexander LetterPlace CombinatoricsForHomalg"' >> init_homalg_starter
 echo 'export gap_bin=gap' >> init_homalg_starter
 echo 'export package_directory=/opt2/gap/local/pkg' >> init_homalg_starter
-echo 'export start_script=/home/spp/bin/Autogap' >> init_homalg_starter
-echo 'export start_script_git=/home/spp/bin/autogap' >> init_homalg_starter
+echo 'export start_script=/home/jenkins/bin/Autogap' >> init_homalg_starter
+echo 'export start_script_git=/home/jenkins/bin/autogap' >> init_homalg_starter
 chmod +x init_homalg_starter
 ./create_homalg_starter
 ./create_homalg_starter_git
-/home/spp/bin/autogap < /dev/null
-/home/spp/bin/Autogap < /dev/null
+/home/jenkins/bin/autogap < /dev/null
+/home/jenkins/bin/Autogap < /dev/null
 
 cd /opt2/gap
 wget http://www.gap-system.org/Download/CreateWorkspace.sh
